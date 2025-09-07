@@ -1,21 +1,13 @@
-using Craftmatrix.org.ConnString;
-
-namespace Craftmatrix.org.Services
+namespace Craftmatrix.org.ConnString
 {
-    public class PostgresService : IPostgresService
+    public class ConnStrings
     {
-        public string ConnString = "";
-
-        ConnStrings connString;
-
-        public PostgresService()
+        public ConnStrings()
         {
             DotNetEnv.Env.Load();
             DotNetEnv.Env.TraversePath().Load();
-            connString = new ConnStrings();
         }
-
-        public string DebugString()
+        public string PostGres()
         {
             var user = DotNetEnv.Env.GetString("POSTGRES_USERNAME");
             var host = DotNetEnv.Env.GetString("POSTGRES_HOST");
@@ -24,10 +16,8 @@ namespace Craftmatrix.org.Services
             var password = DotNetEnv.Env.GetString("POSTGRES_PASS");
             var envi = DotNetEnv.Env.GetString("ENVIRONMENT");
 
-            var connectionString = $"postgresql://{user}:{password}@{host}:{port}/{database}";
-            var datax = connString.PostGres();
-            return datax;
+            var connectionString = $"Username={user};Password={password};Host={host};Port={port};Database={database}";
+            return connectionString;
         }
-
     }
 }

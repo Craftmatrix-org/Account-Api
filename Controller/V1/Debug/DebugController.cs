@@ -1,12 +1,17 @@
 using Craftmatrix.org.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Craftmatrix.org.Controller{
+namespace Craftmatrix.org.Controller
+{
     [ApiController]
     [Route("api/[controller]")]
     public class DebugController : ControllerBase
     {
         private readonly IPostgresService _db;
+
+        // string connectionString = "postgresql://myuser:mypassword@localhost:5432/mydatabase";
+
+
         public DebugController(IPostgresService db)
         {
             _db = db;
@@ -17,7 +22,7 @@ namespace Craftmatrix.org.Controller{
             return Ok("ok");
         }
         [HttpGet]
-        public async Task<IActionResult> Platinum_Task()            
+        public async Task<IActionResult> Platinum_Task()
         {
             var ds = _db.DebugString();
             return Ok(ds);

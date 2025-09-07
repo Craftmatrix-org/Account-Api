@@ -9,3 +9,5 @@
     - https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-8.0
 - Dotnet Env
     - https://www.nuget.org/packages/DotNetEnv
+
+https://www.c-sharpcorner.com/article/entity-framework-core-in-asp-net-core/

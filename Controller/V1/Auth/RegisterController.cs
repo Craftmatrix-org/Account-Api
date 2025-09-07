@@ -10,7 +10,7 @@ namespace Craftmatrix.org.Controller
         [HttpPost]
         public async Task<IActionResult> Register()
         {
-            return Ok("Wwow");            
+            return Ok("Wwow");
         }
     }
 }
