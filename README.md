@@ -10,6 +10,8 @@
 - Dotnet Env
     - https://www.nuget.org/packages/DotNetEnv
 
-https://www.c-sharpcorner.com/article/entity-framework-core-in-asp-net-core/
+- Review for Entity Framework:
+  - https://www.c-sharpcorner.com/article/entity-framework-core-in-asp-net-core/
 
-https://amoenus.dev/swagger-dark-theme
+- Swagger Darkmode (Must Done With Rework Later)
+  - https://amoenus.dev/swagger-dark-theme

@@ -16,8 +16,9 @@ namespace Craftmatrix.org.ConnString
             var password = DotNetEnv.Env.GetString("POSTGRES_PASS");
             var envi = DotNetEnv.Env.GetString("ENVIRONMENT");
 
-            var connectionString = $"Username={user};Password={password};Host={host};Port={port};Database={database}";
-            return connectionString;
+            return $"Username={user};Password={password};Host={host};Port={port};Database={database}";
+
         }
+
     }
 }

@@ -9,18 +9,11 @@ namespace Craftmatrix.org.Controller
     {
         private readonly IPostgresService _db;
 
-        // string connectionString = "postgresql://myuser:mypassword@localhost:5432/mydatabase";
-
-
         public DebugController(IPostgresService db)
         {
             _db = db;
         }
-        [HttpGet("test")]
-        public async Task<IActionResult> TestTask()
-        {
-            return Ok("ok");
-        }
+
         [HttpGet]
         public async Task<IActionResult> Platinum_Task()
         {

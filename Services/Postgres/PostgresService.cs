@@ -17,16 +17,7 @@ namespace Craftmatrix.org.Services
 
         public string DebugString()
         {
-            var user = DotNetEnv.Env.GetString("POSTGRES_USERNAME");
-            var host = DotNetEnv.Env.GetString("POSTGRES_HOST");
-            var port = DotNetEnv.Env.GetString("POSTGRES_PORT");
-            var database = DotNetEnv.Env.GetString("POSTGRES_DATABASE");
-            var password = DotNetEnv.Env.GetString("POSTGRES_PASS");
-            var envi = DotNetEnv.Env.GetString("ENVIRONMENT");
-
-            var connectionString = $"postgresql://{user}:{password}@{host}:{port}/{database}";
-            var datax = connString.PostGres();
-            return datax;
+            return connString.PostGres();
         }
 
     }
