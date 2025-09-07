@@ -11,3 +11,5 @@
     - https://www.nuget.org/packages/DotNetEnv
 
 https://www.c-sharpcorner.com/article/entity-framework-core-in-asp-net-core/
+
+https://amoenus.dev/swagger-dark-theme

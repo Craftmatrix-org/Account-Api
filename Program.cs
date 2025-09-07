@@ -23,9 +23,14 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+    app.UseStaticFiles();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(e =>
+    {
+        e.InjectStylesheet("/swagger-ui/SwaggerDark.css");
+    });
 }
+
 app.MapControllers();
 app.UseHttpsRedirection();
 
