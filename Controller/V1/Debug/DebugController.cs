@@ -1,10 +1,12 @@
 using Craftmatrix.org.Services;
 using Microsoft.AspNetCore.Mvc;
+using Asp.Versioning;
 
 namespace Craftmatrix.org.Controller
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("2.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class DebugController : ControllerBase
     {
         private readonly IPostgresService _db;
