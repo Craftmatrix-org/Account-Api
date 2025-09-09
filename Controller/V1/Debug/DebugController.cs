@@ -1,11 +1,14 @@
 using Craftmatrix.org.Services;
 using Microsoft.AspNetCore.Mvc;
 using Asp.Versioning;
+using Craftmatrix.org.Helpers;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Craftmatrix.org.Controller
 {
     [ApiController]
-    [ApiVersion("2.0")]
+    [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class DebugController : ControllerBase
     {
@@ -17,10 +20,12 @@ namespace Craftmatrix.org.Controller
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Platinum_Task()
         {
+            var token = JWTHelper.GenerateToken("", "", "", "", 60);
             var ds = _db.DebugString();
-            return Ok(ds);
+            return Ok(token);
         }
     }
 }
