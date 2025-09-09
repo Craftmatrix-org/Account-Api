@@ -7,9 +7,20 @@ namespace Craftmatrix.org.Helpers
 {
     public class JWTHelper
     {
-        public static string GenerateToken(string key, string issuer, string audience, string username, int expireMinutes = 60)
+        public JWTHelper()
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+            DotNetEnv.Env.Load();
+            DotNetEnv.Env.TraversePath();
+        }
+        public static string GenerateToken(string username, Guid Id, int expireMinutes = 60)
+        {
+
+            string KEY = DotNetEnv.Env.GetString("KEY");
+            string ISSUER = DotNetEnv.Env.GetString("ISSUER");
+            string AUDIENCE = DotNetEnv.Env.GetString("AUDIENCE");
+
+
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new[]
@@ -19,8 +30,8 @@ namespace Craftmatrix.org.Helpers
             };
 
             var token = new JwtSecurityToken(
-                issuer: issuer,
-                audience: audience,
+                issuer: ISSUER,
+                audience: AUDIENCE,
                 claims: claims,
                 expires: DateTime.UtcNow.AddMinutes(expireMinutes),
                 signingCredentials: credentials

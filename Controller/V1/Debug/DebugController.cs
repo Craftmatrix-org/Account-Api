@@ -2,7 +2,7 @@ using Craftmatrix.org.Services;
 using Microsoft.AspNetCore.Mvc;
 using Asp.Versioning;
 using Craftmatrix.org.Helpers;
-using Microsoft.AspNetCore.Authentication;
+// using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Craftmatrix.org.Controller
@@ -17,15 +17,27 @@ namespace Craftmatrix.org.Controller
         public DebugController(IPostgresService db)
         {
             _db = db;
+            DotNetEnv.Env.Load();
+            DotNetEnv.Env.TraversePath().Load();
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> Platinum_Task()
         {
-            var token = JWTHelper.GenerateToken("", "", "", "", 60);
+
+            var key = "";
+            var issuer = "";
+            var audience = "";
+            var token = JWTHelper.GenerateToken("test", Guid.NewGuid(), 60);
             var ds = _db.DebugString();
             return Ok(token);
+        }
+
+        [Authorize]
+        [HttpGet("test")]
+        public async Task<IActionResult> Try()
+        {
+            return Ok("It works");
         }
     }
 }

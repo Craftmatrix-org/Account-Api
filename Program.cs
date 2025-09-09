@@ -15,8 +15,8 @@ DotNetEnv.Env.TraversePath().Load();
 var builder = WebApplication.CreateBuilder(args);
 
 var Key = DotNetEnv.Env.GetString("KEY");
-var Issuer = "test";
-var Audience = "test";
+var Issuer = DotNetEnv.Env.GetString("ISSUER");
+var Audience = DotNetEnv.Env.GetString("AUDIENCE");
 
 builder.Services.AddSwaggerGen(opt =>
 {
