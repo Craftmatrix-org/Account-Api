@@ -20,5 +20,9 @@ namespace Craftmatrix.org.Services
             return connString.PostGres();
         }
 
+        public Task<T> DebugFunction<T>(T data)
+        {
+            return Task.FromResult(data);
+        }
     }
 }

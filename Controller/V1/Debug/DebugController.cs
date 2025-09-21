@@ -4,6 +4,7 @@ using Asp.Versioning;
 using Craftmatrix.org.Helpers;
 // using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Craftmatrix.org.Test;
 
 namespace Craftmatrix.org.Controller
 {
@@ -33,9 +34,19 @@ namespace Craftmatrix.org.Controller
             return Ok(token);
         }
 
+        [HttpGet("object_return")]
+        public async Task<IActionResult> Objecter()
+        {
+            TestDto tdto = new TestDto();
+            tdto.wow = "iyot";
+            tdto.wiw = "dog";
+            var thisistheoutput = await _db.DebugFunction<TestDto>(tdto);
+            return Ok(thisistheoutput);
+        }
+
         [Authorize]
         [HttpGet("test")]
-        public async Task<IActionResult> Try()
+        public IActionResult Try()
         {
             return Ok("It works");
         }
