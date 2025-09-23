@@ -5,6 +5,7 @@ using Craftmatrix.org.Helpers;
 // using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Craftmatrix.org.Test;
+using Craftmatrix.org.DB;
 
 namespace Craftmatrix.org.Controller
 {
@@ -46,9 +47,14 @@ namespace Craftmatrix.org.Controller
 
         [Authorize]
         [HttpGet("test")]
-        public IActionResult Try()
+        public async Task<IActionResult> Try()
         {
-            return Ok("It works");
+            UserDto user = new UserDto();
+            user.Id = Guid.NewGuid();
+            user.Joined = DateTime.UtcNow;
+            var resulta = await _db.PostDataAsync<UserDto>(user, "User");
+
+            return Ok(resulta);
         }
     }
 }

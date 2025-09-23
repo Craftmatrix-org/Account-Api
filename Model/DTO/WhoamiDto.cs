@@ -1,4 +1,4 @@
-namespace Craftmatrix.org.DB
+namespace Craftmatrix.org.Dto
 {
     public class Whoami
     {

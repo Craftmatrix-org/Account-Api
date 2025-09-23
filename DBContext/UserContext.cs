@@ -19,6 +19,12 @@ namespace Craftmatrix.org.DB
                 optionsBuilder.UseNpgsql(connString.PostGres());
             }
         }
-        DbSet<UserDto> User { get; set; }
+        public DbSet<UserDto> User { get; set; }
+        //public DbSet<Whoami> WhoAmI { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+        }
     }
 }
